@@ -1,0 +1,133 @@
+body {
+  font-family: monospace;
+  font-size: 12px;
+  margin: 0;
+  background: #4e4e4e;
+  color: #ffcf6c;
+}
+h1 {
+  display: inline-block;
+  line-height: 40px;
+}
+li {
+  list-style: none;
+  line-height: 15px;
+}
+.navbar {
+  position: absolute;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 80px;
+}
+.navbar .header {
+  font-size: 25px;
+  font-weight: bold;
+}
+.navbar a {
+  width: 60px;
+  height: 30px;
+  background: #00a8c6;
+  padding: 10px;
+  color: #2c2c2c;
+  cursor: pointer;
+}
+.navbar a:hover {
+  color: white;
+}
+.navbar a:active {
+  background: lightgrey;
+}
+.container {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  bottom: 0px;
+}
+.container .left {
+  position: absolute;
+  width: 46%;
+  left: 2%;
+  height: 100%;
+}
+.container .left textarea {
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  resize: none;
+  width: 100%;
+  outline: none;
+  background: transparent;
+  color: white;
+}
+.container .right {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46%;
+  height: 100%;
+  overflow-y: auto;
+  background: #2c2c2c;
+}
+.container .right i {
+  margin-left: -10px;
+}
+.string {
+  color: #ffcf6c;
+}
+.number {
+  color: #00a8c6;
+}
+.object {
+  color: #808080;
+}
+.array {
+  color: #6bed87;
+}
+.boolean {
+  color: #ff8073;
+}
+.type {
+  float: right;
+  font-size: 10px;
+  margin-right: 10px;
+}
+.icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+.icon-string {
+  background: #ffcf6c;
+}
+.icon-array {
+  cursor: pointer;
+}
+.minimize:after {
+  content: "[-]";
+}
+.icon-object {
+  background: #808080;
+  cursor: pointer;
+}
+.icon-number {
+  background: #00a8c6;
+}
+.icon-boolean {
+  background: #ff8073;
+}
+.hide {
+  height: 0px;
+  overflow: hidden;
+}
+.error {
+  border: 1px solid red;
+}
+.CodeMirror {
+  height: 100%;
+}
+.size {
+  font-size: 10px;
+  color: white;
+}
