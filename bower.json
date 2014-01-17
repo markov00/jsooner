@@ -1,0 +1,10 @@
+{
+	"name": "jsonviewer",
+	"version": "0.0.1",
+	"dependencies": {
+		"angular":"*",
+		"underscore":"*",
+		"angular-ui-codemirror":"*",
+		"jsonlint":"*"
+	}
+}

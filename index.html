@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="jsooner">
+	<head>
+		<title>jsooner</title>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="lib/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="lib/codemirror/addon/lint/lint.css">
+		<link rel="stylesheet" type="text/css" href="lib/codemirror/theme/mbo.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+
+
+		<script type="text/javascript" src="lib/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+
+		<script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src="lib/codemirror/mode/javascript/javascript.js"></script>
+		<script type="text/javascript" src="lib/jsonlint/lib/jsonlint.js"></script>
+		<script type="text/javascript" src="lib/codemirror/addon/lint/lint.js"></script>
+		<script type="text/javascript" src="lib/codemirror/addon/lint/json-lint.js"></script>
+
+		<script type="text/javascript" src="lib/angular-ui-codemirror/ui-codemirror.js"></script>
+
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body ng-controller="ViewerController">
+		<div class="navbar">
+			<span class="header">jsooner</span>
+			<a ng-click="format()"><i class="fa fa-align-left"></i> FORMAT</a>
+			<a ng-click="compact()"><i class="fa fa-align-justify"></i> COMPACT</a>
+		</div>
+		<div class="container">
+			<div class="left">
+				<div ui-codemirror="editorOptions" ng-model="text" ng-class="{error:error}" ui-refresh='true'></div>
+			</div>
+			<div class="right">
+				<div class="json"><collection collection='data'></collection></div>
+			</div>
+		</div>
+
+	</body>
+</html>

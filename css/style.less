@@ -1,0 +1,161 @@
+@orange:#ffcf6c;
+@blue:#00a8c6;
+@darkgray:#2c2c2c;
+@lightgray:#4e4e4e;
+@red:#FF8073;
+@green:#6BED87;
+
+body{
+    font-family: monospace;
+    font-size: 12px;
+    margin:0;
+    background: @lightgray;
+    color:@orange;
+}
+h1{
+    display: inline-block;
+    line-height: 40px;
+}
+li{
+    list-style: none;
+    line-height: 15px;
+}
+.navbar{
+    position:absolute;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 80px;
+    .header{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    a{
+        width:60px;
+        height:30px;
+        background: @blue;
+        padding: 10px;
+        color:@darkgray;
+        cursor: pointer;
+        &:hover{
+            color:white;
+        }
+        &:active{
+            background: lightgrey;
+        }
+    }
+}
+.container{
+    position:absolute;
+    top:60px;
+    width:100%;
+    bottom:0px;
+    .left{
+        position: absolute;
+        width:46%;
+        left:2%;
+        height: 100%;
+        textarea{
+            font-family: Monaco,Consolas,"Lucida Console",monospace;
+            position:absolute;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+            resize: none;
+            width:100%;
+            outline: none;
+            background: transparent;
+            color:white;
+
+        }
+    }
+    .right{
+        position:absolute;
+        top:0;
+        left:50%;
+        width:46%;
+        height: 100%;
+        overflow-y: auto;
+        background: @darkgray;
+        i{
+            margin-left: -10px;
+        }
+    }
+}
+
+
+
+.string {
+    color: @orange;
+}
+
+.number {
+    color: @blue;
+}
+
+.object {
+    color: #808080;
+}
+
+.array {
+    color: @green;
+}
+.boolean {
+    color: @red;
+}
+.type {
+    float:right;
+    font-size: 10px;
+    margin-right:10px;
+}
+
+.icon{
+    display: inline-block;
+    margin-right:10px;
+}
+
+
+.icon-string {
+    background: @orange;
+}
+
+.icon-array {
+    cursor:pointer;
+}
+.maximize{
+
+}
+.minimize{
+    &:after{
+        content:"[-]";
+    }
+}
+
+
+.icon-object {
+    background: #808080;
+    cursor:pointer;
+}
+
+.icon-number {
+    background: @blue;
+}
+
+.icon-boolean {
+    background: @red
+}
+.hide{
+    height:0px;
+    overflow: hidden;
+}
+
+.error{
+    border:1px solid red;
+}
+.CodeMirror{
+    height: 100%;
+}
+.size{
+    font-size: 10px;
+    color:white;
+}
