@@ -118,7 +118,7 @@ app.controller("ViewerController", function ($scope) {
 		"forkMe": "https://github.com/markov00/jsooner.git",
 		"likeIt": true,
 		"version": 0.1,
-		"date":["angularjs","codemirror","jsonlint","underscore"]
+		"libs":["angularjs","codemirror","jsonlint","underscore"]
 	};
 
 	$scope.text = JSON.stringify($scope.data);
