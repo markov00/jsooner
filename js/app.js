@@ -114,27 +114,11 @@ app.controller("ViewerController", function ($scope) {
 	};
 
 	$scope.data = {
-		"jsooner": "visualize JSON faster",
-		"forkme": "https://github.com/markov00/jsooner.git",
-		"likeit": true,
+		"jsooner": "simple JSON editor",
+		"forkMe": "https://github.com/markov00/jsooner.git",
+		"likeIt": true,
 		"version": 0.1,
-		"credits": [
-			{
-				"angularjs": "https://github.com/zaach/jsonlint"
-			},
-			{
-				"codemirror": "https://github.com/zaach/jsonlint"
-			},
-			{
-				"jsonlint": "http://jsonlint.com"
-			},
-			{
-				"jsonviewer": "http://jsonviewer.stack.hu"
-			},
-			{
-				"nasted directives": "http://sporto.github.io"
-			}
-		]
+		"date":["angularjs","codemirror","jsonlint","underscore"]
 	};
 
 	$scope.text = JSON.stringify($scope.data);
