@@ -36,7 +36,7 @@ app.directive('collection', function () {
 			scope: {
 				member: '='
 			},
-			template: '<li><i class="fa fa-plus-square" ng-show="!primitive" ng-click="toggleShow()"></i><div class="icon icon-{{getType()}}"  ></div><span>{{member.name}}:</span></li>',
+			template: '<li><i class="fa fa-minus-square" ng-show="!primitive" ng-click="toggleShow()"></i><div class="icon icon-{{getType()}}"  ></div><span>{{member.name}}:</span></li>',
 			link: function (scope, element, attrs) {
 				var collectionSt = '<span class="size" ng-show="getSize()>-1"> {{getSizeText()}}</span><span class="type">[{{getType()}}]</span><collection collection="member.value"></collection>';
 				var primitiveTemplate = '<span class="{{getType()}}"> {{member.value}} </span><span class="type">[{{getType()}}]</span>';
