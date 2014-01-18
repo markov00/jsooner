@@ -46,7 +46,7 @@ app.directive('collection', function () {
 			template: '<li><i class="fa fa-minus-square" ng-show="!primitive" ng-click="toggleShow()"></i><div class="icon icon-{{getType()}}"  ></div><span>{{member.name}}:</span></li>',
 			link: function (scope, element, attrs) {
 				var collectionSt = '<span class="size" ng-show="getSize()>-1"> {{getSizeText()}}</span><span class="type">[{{getType()}}]</span><collection collection="member.value"></collection>';
-				var primitiveTemplate = '<span class="value {{getType()}}" linkify ng-bind="member.value"> {{member.value}} </span><span class="type">[{{getType()}}]</span>';
+				var primitiveTemplate = '<span class="value {{getType()}}"> {{member.value}} </span><span class="type">[{{getType()}}]</span>';
 				scope.primitive = false;
 
 				if (_.isArray(scope.member.value) || _.isObject(scope.member.value)) {
@@ -129,7 +129,7 @@ app.controller("ViewerController", function ($scope) {
 		"credits": [
 			{
 				"Gabor Turi": "JSON Viewer",
-				"url": "http://jsonviewer.stack.hu"
+				"url": "http://jsooner.stack.hu"
 			},
 			{
 				"Sebastian Porto": "Nested Directives",
