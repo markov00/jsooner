@@ -5,7 +5,7 @@ String.space = function (len) {
 	}
 	return t.join('');
 };
-Object.size = function(obj) {
+Object.size = function (obj) {
 	var size = 0, key;
 	for (key in obj) {
 		if (obj.hasOwnProperty(key) && key != '$$hashKey') size++;
@@ -21,9 +21,9 @@ app.directive('collection', function () {
 		replace: true,
 		scope: {
 			collection: '=',
-			show:"="
+			show: "="
 		},
-		template: '<ul><member ng-repeat="(name,value) in collection | orderBy:$index" member="{name:name,value:value}"></member></ul>',
+		template: '<ul><member ng-repeat="(name,value) in collection" member="{name:name,value:value}"></member></ul>',
 		link: function (scope, element, attrs) {
 		}
 	}
@@ -43,53 +43,47 @@ app.directive('collection', function () {
 				scope.primitive = false;
 
 				if (_.isArray(scope.member.value) || _.isObject(scope.member.value)) {
-					console.log("array,object",scope.member.value);
-					$compile(collectionSt)(scope, function(cloned, scope)   {
-						console.log(element.find(".child"));
+					$compile(collectionSt)(scope, function (cloned, scope) {
 						element.append(cloned);
 					});
-				}else{
-					console.log("primitive",scope.member.value);
+				} else {
 					scope.primitive = true;
-					$compile(primitiveTemplate)(scope, function(cloned, scope)   {
+					$compile(primitiveTemplate)(scope, function (cloned, scope) {
 						element.append(cloned);
 					})
 				}
 
-				scope.getType = function(){
-					if(_.isArray(scope.member.value))
+				scope.getType = function () {
+					if (_.isArray(scope.member.value))
 						return "array";
-					else if(_.isNumber(scope.member.value))
+					else if (_.isNumber(scope.member.value))
 						return "number";
-					else if(_.isString(scope.member.value))
+					else if (_.isString(scope.member.value))
 						return "string";
-					else if(_.isBoolean(scope.member.value))
+					else if (_.isBoolean(scope.member.value))
 						return "boolean";
 					else
 						return "object";
 
 				}
-				scope.getSize = function(){
-					if(_.isArray(scope.member.value))
+				scope.getSize = function () {
+					if (_.isArray(scope.member.value))
 						return scope.member.value.length;
-					else if(_.isObject(scope.member.value))
+					else if (_.isObject(scope.member.value))
 						return Object.size(scope.member.value);
 					return -1;
 				}
-				scope.getSizeText = function(){
-					if(_.isArray(scope.member.value))
-						return "["+scope.member.value.length+"]";
-					else if(_.isObject(scope.member.value)){
-
-
-					console.log(scope.member.value);
-						return "{"+Object.size(scope.member.value)+"}";
+				scope.getSizeText = function () {
+					if (_.isArray(scope.member.value))
+						return "[" + scope.member.value.length + "]";
+					else if (_.isObject(scope.member.value)) {
+						return "{" + Object.size(scope.member.value) + "}";
 					}
 					else
 						return "";
 				}
 				scope.show = true;
-				scope.toggleShow = function(){
+				scope.toggleShow = function () {
 					element.find("i").toggleClass("fa-plus-square");
 					element.find("i").toggleClass("fa-minus-square");
 					element.find("ul").toggleClass("hide");
@@ -101,14 +95,14 @@ app.directive('collection', function () {
 app.controller("ViewerController", function ($scope) {
 
 	$scope.editorOptions = {
-		lineWrapping : true,
+		lineWrapping: true,
 		lineNumbers: true,
 		mode: "application/json",
-		theme:"mbo",
-		lint:true,
+		theme: "mbo",
+		lint: true,
 		styleActiveLine: true,
 		matchBrackets: true,
-		mime:"application/json",
+		mime: "application/json",
 		gutters: ["CodeMirror-lint-markers"],
 	};
 
@@ -136,18 +130,16 @@ app.controller("ViewerController", function ($scope) {
 		]
 	};
 
-	$scope.text= JSON.stringify($scope.data);
+	$scope.text = JSON.stringify($scope.data);
 
-
-	$scope.error = false;
-	$scope.$watch('text',function(text){
-		if(!text)
+	$scope.$watch('text', function (text) {
+		if (!text)
 			return;
-		try{
+		try {
 			$scope.data = JSON.parse(text);
-		}catch(err){
+		} catch (err) {
 		}
-	},true);
+	}, true);
 
 	$scope.format = function () {
 		var text = $scope.text.replace(/\n/g, ' ').replace(/\r/g, ' ');
@@ -181,7 +173,7 @@ app.controller("ViewerController", function ($scope) {
 		$scope.text = t.join('');
 	};
 
-	$scope.compact =  function () {
+	$scope.compact = function () {
 		var text = $scope.text.replace(/\n/g, ' ').replace(/\r/g, ' ');
 		var t = [];
 		var inString = false;
