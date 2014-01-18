@@ -23,8 +23,15 @@ app.directive('collection', function () {
 			collection: '=',
 			show: "="
 		},
-		template: '<ul><member ng-repeat="(name,value) in collection" member="{name:name,value:value}"></member></ul>',
+		template: '<ul><member ng-repeat="key in notSorted(collection)" member="{name:key,value:collection[key]}"></member></ul>',
 		link: function (scope, element, attrs) {
+			scope.notSorted = function(obj){
+				if (!obj) {
+					return [];
+				}
+				return Object.keys(obj);
+			}
+
 		}
 	}
 })
