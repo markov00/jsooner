@@ -1,11 +1,10 @@
 {
-  "name": "jsooner",
-  "version": "0.0.1",
-  "dependencies": {
-    "angular": "*",
-    "underscore": "*",
-    "angular-ui-codemirror": "*",
-    "jsonlint": "*",
-    "angular-linkify": "~0.3.0"
-  }
+	"name": "jsooner",
+	"version": "1.0.0",
+	"dependencies": {
+		"angular": "*",
+		"underscore": "*",
+		"angular-ui-codemirror": "*",
+		"jsonlint": "*"
+	}
 }

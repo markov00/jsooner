@@ -13,7 +13,7 @@ Object.size = function (obj) {
 	return size;
 };
 
-var app = angular.module("jsooner", ['ui.codemirror', 'linkify']);
+var app = angular.module("jsooner", ['ui.codemirror']);
 
 app.directive('collection', function () {
 	return {
@@ -46,10 +46,17 @@ app.directive('collection', function () {
 			template: '<li><i class="fa fa-minus-square" ng-show="!primitive" ng-click="toggleShow()"></i><div class="icon icon-{{getType()}}"  ></div><span>{{member.name}}:</span></li>',
 			link: function (scope, element, attrs) {
 				var collectionSt = '<span class="size" ng-show="getSize()>-1"> {{getSizeText()}}</span><span class="type">[{{getType()}}]</span><collection collection="member.value"></collection>';
-				var primitiveTemplate = '<span class="value {{getType()}}"> {{member.value}} </span><span class="type">[{{getType()}}]</span>';
+				var primitiveTemplate = '<span class="value {{getType()}}"> <a ng-show="isUrl()" href="{{member.value}}" target="_blank">{{member.value}}</a><span ng-show="!isUrl()">{{member.value}}</span> </span><span class="type">[{{getType()}}]</span>';
 				scope.primitive = false;
 
+				scope.isUrl = function () {
+					if (_.isString(scope.member.value))
+						return scope.member.value.match(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+(?![^\s]*?")([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/ig) != null;
+					else
+						return false;
+				}
 				if (_.isArray(scope.member.value) || _.isObject(scope.member.value)) {
+					scope.primitive = false;
 					$compile(collectionSt)(scope, function (cloned, scope) {
 						element.append(cloned);
 					});
@@ -59,6 +66,7 @@ app.directive('collection', function () {
 						element.append(cloned);
 					})
 				}
+
 
 				scope.getType = function () {
 					if (_.isArray(scope.member.value))
@@ -80,6 +88,7 @@ app.directive('collection', function () {
 						return Object.size(scope.member.value);
 					return -1;
 				}
+
 				scope.getSizeText = function () {
 					if (_.isArray(scope.member.value))
 						return "[" + scope.member.value.length + "]";
@@ -120,7 +129,6 @@ app.controller("ViewerController", function ($scope) {
 		"version": 0.1,
 		"libs": [
 			"angularjs",
-			"angular-linkify",
 			"angularjs-ui-codemirror",
 			"codemirror",
 			"jsonlint",
