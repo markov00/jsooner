@@ -74,8 +74,17 @@ li {
 .container .right i {
   margin-left: -10px;
 }
+.value {
+  padding-left: 10px;
+}
 .string {
   color: #ffcf6c;
+}
+.string a {
+  color: #ffcf6c;
+}
+.string a:hover {
+  color: white;
 }
 .number {
   color: #00a8c6;

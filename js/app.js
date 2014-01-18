@@ -13,7 +13,7 @@ Object.size = function (obj) {
 	return size;
 };
 
-var app = angular.module("jsooner", ['ui.codemirror']);
+var app = angular.module("jsooner", ['ui.codemirror', 'linkify']);
 
 app.directive('collection', function () {
 	return {
@@ -25,7 +25,7 @@ app.directive('collection', function () {
 		},
 		template: '<ul><member ng-repeat="key in notSorted(collection)" member="{name:key,value:collection[key]}"></member></ul>',
 		link: function (scope, element, attrs) {
-			scope.notSorted = function(obj){
+			scope.notSorted = function (obj) {
 				if (!obj) {
 					return [];
 				}
@@ -46,7 +46,7 @@ app.directive('collection', function () {
 			template: '<li><i class="fa fa-minus-square" ng-show="!primitive" ng-click="toggleShow()"></i><div class="icon icon-{{getType()}}"  ></div><span>{{member.name}}:</span></li>',
 			link: function (scope, element, attrs) {
 				var collectionSt = '<span class="size" ng-show="getSize()>-1"> {{getSizeText()}}</span><span class="type">[{{getType()}}]</span><collection collection="member.value"></collection>';
-				var primitiveTemplate = '<span class="{{getType()}}"> {{member.value}} </span><span class="type">[{{getType()}}]</span>';
+				var primitiveTemplate = '<span class="value {{getType()}}" linkify ng-bind="member.value"> {{member.value}} </span><span class="type">[{{getType()}}]</span>';
 				scope.primitive = false;
 
 				if (_.isArray(scope.member.value) || _.isObject(scope.member.value)) {
@@ -110,7 +110,7 @@ app.controller("ViewerController", function ($scope) {
 		styleActiveLine: true,
 		matchBrackets: true,
 		mime: "application/json",
-		gutters: ["CodeMirror-lint-markers"],
+		gutters: ["CodeMirror-lint-markers"]
 	};
 
 	$scope.data = {
@@ -118,7 +118,24 @@ app.controller("ViewerController", function ($scope) {
 		"forkMe": "https://github.com/markov00/jsooner.git",
 		"likeIt": true,
 		"version": 0.1,
-		"libs":["angularjs","codemirror","jsonlint","underscore"]
+		"libs": [
+			"angularjs",
+			"angular-linkify",
+			"angularjs-ui-codemirror",
+			"codemirror",
+			"jsonlint",
+			"underscore"
+		],
+		"credits": [
+			{
+				"Gabor Turi": "JSON Viewer",
+				"url": "http://jsonviewer.stack.hu"
+			},
+			{
+				"Sebastian Porto": "Nested Directives",
+				"url": "http://sporto.github.io"
+			}
+		]
 	};
 
 	$scope.text = JSON.stringify($scope.data);
