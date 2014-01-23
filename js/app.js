@@ -30,7 +30,7 @@ app.directive('collection', function () {
 					return [];
 				}
 				return Object.keys(obj);
-			}
+			};
 
 		}
 	}
@@ -137,7 +137,7 @@ app.controller("ViewerController", function ($scope) {
 		"credits": [
 			{
 				"Gabor Turi": "JSON Viewer",
-				"url": "http://jsooner.stack.hu"
+				"url": "http://jsonviewer.stack.hu"
 			},
 			{
 				"Sebastian Porto": "Nested Directives",
